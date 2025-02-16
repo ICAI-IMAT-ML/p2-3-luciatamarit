@@ -131,7 +131,7 @@ def evaluate_regression(y_true, y_pred):
 
 
 # ### Scikit-Learn comparison
-
+from sklearn.linear_model import LinearRegression
 
 def sklearn_comparison(x, y, linreg):
     """Compares a custom linear regression model with scikit-learn's LinearRegression.
@@ -155,11 +155,14 @@ def sklearn_comparison(x, y, linreg):
 
     # Assuming your data is stored in x and y
     # TODO : Reshape x to be a 2D array, as scikit-learn expects 2D inputs for the features
-    x_reshaped = None
+    x_reshaped = x.reshape(-1, 1)
+
+    # Scikit-Learn espera que las características de entrada (x) sean un array bidimensional (2D), incluso si solo hay una característica
 
     # Create and train the scikit-learn model
     # TODO : Train the LinearRegression model
-    sklearn_model = None
+    sklearn_model = LinearRegression()
+    print(sklearn_model)
     sklearn_model.fit(x_reshaped, y)
 
     # Now, you can compare coefficients and intercepts between your model and scikit-learn's model
